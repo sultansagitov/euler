@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load enum %}
+
+{% block title %}
+    <title>Levels</title>
+    <style>
+        #question-count {
+            display: none;
+        }
+    </style>
+{% endblock title %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <li>
+            <b>Курсы:</b>
+            <select name="course">
+                <option value="-1">---</option>
+                {% for coursetype in coursetypes %}
+                <optgroup label="{{ coursetype.name }}">
+                    {% for course in coursetype.course_set.all %}
+                    <option value="{{ course.pk }}">{{ course.name }}</option>
+                    {% endfor %}
+                </optgroup>
+                {% endfor %} 
+            </select>
+            <a href="{% url 'createcourse' %}">Создать курс</a>
+        </li>
+        <li>
+            <b>Вопросы:</b>
+            <input type="number" name="question-count" id="question-count">
+            <ul id="questions"></ul>
+            <button id="addquestion">Добавить вопрос</button>
+        </li>
+        <li><input type="submit" value="Создать"></li>
+    </form>
+
+    <script src="{% static 'create-level.js' %}"></script>
+{% endblock content %}

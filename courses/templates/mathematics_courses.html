@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script
+            src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async
+            src="{% static 'mathjax/tex-mml-svg.js' %}"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap"
+            rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Обучение математике</title>
+        <link rel="stylesheet" href="{% static 'courses.css' %}">
+        <!-- Ваши метаданные -->
+    </head>
+    <body>
+        <header class="header">
+            <h1 class="logo">Euler</h1>
+            <h2 class="sub-heading"
+                style="font-weight: lighter; margin-left: 10px;">Math</h2>
+        </header>
+
+        <main class="main">
+            <div class="left-section">
+                <h1 style="margin: 10px 0; margin-top: 0;">Задачи</h1>
+                <a href="#" class="navigation-link" id="openModalLink">Интерактивные задания</a>
+                <a href="#" class="navigation-link">Видеоуроки и обучающие
+                    материалы</a>
+            </div>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <div class="container">
+                    <div class="course-name">
+                      <h1>Математика</h1>
+                      <div class="topics">
+                        {% for course in courses %}
+                        <div class="topic">
+                          <h3>{{ course.name }}</h3>
+                        </div>
+                        <div class="levels">
+                          {% for level in course.level_set.all %}
+                          <p>
+                            <a href="{% url 'level' level.pk %}">{{ level.order }} уровень</a>
+                          </p>
+                          {% endfor %}
+                        </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <div class="center-section" style="margin-top: 0;">
+                <!-- Здесь будет информация о курсах -->
+            </div>
+
+            <div class="right-section">
+                <h2 style="margin-top: 0;">Примеры и обучения</h2>
+                <div class="formula-container">
+                    <div class="formula-title">Квадратное уравнение</div>
+                    <div class="formula">
+                        \[ ax^2 + bx + c = 0 \]
+                    </div>
+                </div>
+            
+                <div class="formula-container">
+                    <div class="formula-title">Сложение и вычитание</div>
+                    <div class="formula">
+                        \[ a + b = c \]
+                        \[ a - b = d \]
+                    </div>
+                </div>
+            
+                <div class="formula-container">
+                    <div class="formula-title">Тригонометрия</div>
+                    <div class="formulas">
+                        <div class="formula">
+                            \[ \sin(\theta) \]  
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formula-container">
+                    <div class="formula-title">Арифметика</div>
+                    <div class="formulas">
+                        <div class="formula">
+                            \[ \frac{a}{b} = f \]
+                        </div>
+                    </div>
+                </div>
+                
+            <div class="formula-container">
+                <div class="formula-title">Матрицы</div>
+                <div class="formulas">
+                    <div class="formula">\[
+                        \begin{bmatrix}
+                            1 & 2 \\
+                            3 & 4 \\
+                        \end{bmatrix}
+                    \]</div>
+                    
+                </div>
+            </div>
+        
+            <div class="formula-container">
+                <div class="formula-title">Системы уравнений</div>
+                <div class="formulas">
+                    \[\begin{cases}
+                            2x + 3y = 8 \\
+                            4x - y = 2 \\\end{cases}\]</div>
+                
+                </div>
+            </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2023 Обучение математике</p>
+        </footer>
+
+    <script>
+        // Получаем ссылку на элементы
+var modal = document.querySelector(".modal");
+var openModalButton = document.getElementById("openModalLink");
+
+// Открываем модальное окно при клике на кнопку
+openModalButton.addEventListener("click", function() {
+  modal.style.display = "block";
+});
+
+
+var closeModalButton = document.querySelector(".close");
+closeModalButton.addEventListener("click", function() {
+  modal.style.display = "none";
+});
+
+
+window.addEventListener("click", function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+});
+
+    </script>
+    </body>
+</html>

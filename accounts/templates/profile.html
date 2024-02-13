@@ -1,0 +1,107 @@
+{% extends 'base_header.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="manifest" href="{% static 'icon/site.webmanifest' %}" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+    href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Archivo+Black&family=Belanosima:wght@700&family=Dancing+Script:wght@500&family=Inter:wght@400;700&family=Josefin+Sans:ital,wght@1,700&family=Lexend+Zetta:wght@900&family=Major+Mono+Display&family=Montserrat:wght@400;700;900&family=Poppins:wght@600&family=Prompt:wght@500;600&family=Raleway:wght@300&family=Ysabeau+SC:wght@400;700&display=swap"
+    rel="stylesheet" />
+<link rel="stylesheet" href="{% static 'style.css' %}" />
+<link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap"
+    rel="stylesheet">
+    <style>
+        .profile-page .content__avatar {
+            background: #8f6ed5 url("/media/{{ request.user.student.avatar }}") center center no-repeat;
+        }
+    </style>
+<link rel="stylesheet" href="{% static 'profile.css' %}">
+<title>{{ request.user }}</title>
+{% endblock head %} 
+
+{% block content %}
+<div class="profile-page">
+    <div class="content">
+        <div class="content__cover">
+            <label for="avatar_img" class="content__avatar">
+            </label>
+            <!-- Not visible -->
+            <form action="post" id="avatar_form">
+                {% csrf_token %}
+                <input type="file" name="avatar_img" id="avatar_img">
+            </form>
+            <!-- Not visible -->
+            <div class="content__bull"><span></span><span></span><span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="content__actions">
+            <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                    <path fill="currentColor"
+                    d="M192 256A112 112 0 1 0 80 144a111.94 111.94 0 0 0 112 112zm76.8 32h-8.3a157.53 157.53 0 0 1-68.5 16c-24.6 0-47.6-6-68.5-16h-8.3A115.23 115.23 0 0 0 0 403.2V432a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48v-28.8A115.23 115.23 0 0 0 268.8 288z"></path>
+                    <path fill="currentColor"
+                    d="M480 256a96 96 0 1 0-96-96 96 96 0 0 0 96 96zm48 32h-3.8c-13.9 4.8-28.6 8-44.2 8s-30.3-3.2-44.2-8H432c-20.4 0-39.2 5.9-55.7 15.4 24.4 26.3 39.7 61.2 39.7 99.8v38.4c0 2.2-.5 4.3-.6 6.4H592a48 48 0 0 0 48-48 111.94 111.94 0 0 0-112-112z"></path>
+                </svg>
+
+                {% if request.user.student.admin %}
+                    <span>Admin</span>
+                {% else %}
+                    <span>Student</span>
+                {% endif %}
+            </a>
+        </div>
+        <div class="content__title">
+            <h1>{{ request.user }}</h1>
+            <span>{{ request.user.student.country }}, {{ request.user.student.city }}</span>
+            <p>#{{ request.user.student.code }}</p>
+            <a href="{% url 'editprofile' %}">Редактировать</a>
+        </div>
+        <div class="content__description">
+            <p>{{ request.user.student.bio }}</p>
+        </div>
+        <ul class="content__list">
+            <li>
+                <span>{{ request.user.student.crystals }}</span>
+                crystals
+            </li>
+        </ul>
+        <div class="content__button"><a class="button" href="{% url 'friends' %}">
+                <div class="button__border"></div>
+                <div class="button__bg"></div>
+                <p class="button__text">Friends</p></a></div>
+    </div>
+    <div class="bg">
+        <div><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+    <div class="theme-switcher-wrapper" id="theme-switcher-wrapper">
+        <span>Themes color</span>
+        <ul>
+            <li><em class="is-active" data-theme="orange"></em></li>
+            <li><em data-theme="green"></em></li>
+            <li><em data-theme="purple"></em></li>
+            <li><em data-theme="blue"></em></li>
+            
+            <!-- Not visible -->
+            <form action="post" id="theme_form">
+                {% csrf_token %}
+                <input type="number" name="theme" id="theme_input">
+            </form>
+            <!-- Not visible -->
+        </ul>
+    </div>
+    <div class="theme-switcher-button" id="theme-switcher-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+            <path fill="currentColor"
+                d="M352 0H32C14.33 0 0 14.33 0 32v224h384V32c0-17.67-14.33-32-32-32zM0 320c0 35.35 28.66 64 64 64h64v64c0 35.35 28.66 64 64 64s64-28.65 64-64v-64h64c35.34 0 64-28.65 64-64v-32H0v32zm192 104c13.25 0 24 10.74 24 24 0 13.25-10.75 24-24 24s-24-10.75-24-24c0-13.26 10.75-24 24-24z"></path>
+        </svg>
+    </div>
+</div>
+
+<script>
+    let theme_id = +"{{ request.user.student.theme }}"
+</script>
+<script src="{% static 'profile.js' %}"></script>
+{% endblock content %}

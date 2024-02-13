@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+    {% block head %}
+    <head>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% block title %}
+        <title>Document</title>
+        {% endblock title %}
+
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="{% static 'icon/apple-touch-icon.png' %}" />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="{% static 'icon/favicon-32x32.png' %}" />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="{% static 'icon/favicon-16x16.png' %}" />
+        <link rel="manifest" href="{% static 'icon/site.webmanifest' %}" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Archivo+Black&family=Belanosima:wght@700&family=Dancing+Script:wght@500&family=Inter:wght@400;700&family=Josefin+Sans:ital,wght@1,700&family=Lexend+Zetta:wght@900&family=Major+Mono+Display&family=Montserrat:wght@400;700;900&family=Poppins:wght@600&family=Prompt:wght@500;600&family=Raleway:wght@300&family=Ysabeau+SC:wght@400;700&display=swap"
+            rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'style.css' %}" />
+    </head>
+    {% endblock head %}
+    <body>
+        <button class="sidebar-toggle"><img src="{% static 'images/web-browser.png' %}" alt="" class="tab"></button>
+        <div class="sidebar">
+            <img src="{% static 'images/logo.jpg' %}" alt class="logo">
+            <ul class="sidebar-content">
+
+                <li class="sidebar-icons">
+                    <a href="{% url 'levels' %}">
+                        <img src="{% static 'images/book.png' %}" alt>
+                        <span>Курсы</span>
+                    </a>
+                </li>
+                <li class="sidebar-icons">
+                    <a href="{% url 'profile' %}">
+                        <img src="{% static 'images/account.png' %}" alt>
+                        <span>Профиль</span>
+                    </a>
+                </li>
+                <li class="sidebar-icons">
+                    <a href="{% url 'friends' %}">
+                        <img src="{% static 'images/friends.png' %}" alt>
+                        <span>
+                            Друзья
+                            
+                            {% if request.user.student.friendnotification_from.count > 0 %}
+                                ({{ request.user.student.friendnotification_from.count }})
+                            {% endif %}
+                        </span>
+                    </a>
+                </li>
+                <li class="sidebar-icons has-submenu">
+                    <a href="#" class="submenu-toggle">
+                        <img src="{% static 'images/more.png' %}" alt>
+                        <span>Еще</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="{% url 'logout' %}"><img
+                                    src="{% static 'images/exit.png' %}"
+                                    alt="Logout"> <span>Выйти</span></a></li>
+                        <li><a href="{% url 'login' %}"><img
+                                    src="{% static 'images/enter.png' %}"
+                                    alt="Login"> <span>Войти</span></a></li>
+                        <li><a href="{% url 'signup' %}"><img
+                                    src="{% static 'images/add-friend.png' %}"
+                                    alt="Signup"><span>Зарегистрироваться</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="header">
+            <nav class="nav">
+
+                {% if request.user.is_authenticated %}
+                <span>
+                    {{ request.user }}
+                    {% if request.user.student.admin %}
+                    (Admin)
+                    {% endif %}
+                </span>
+                <div class="donate-block">
+                    <img src="{% static 'images/heart1.png' %}" class="donate">
+                    <span>
+                        {{ request.user.student.lifes }}
+                    </span>
+                </div>
+                <div class="donate-block">
+                    <img src="{% static 'images/crystal.png' %}" class="donate">
+                    <span>
+                        {{ request.user.student.crystals }}
+                    </span>
+                </div>
+
+                <a href="{% url 'logout' %}" class="logout">
+                    <span class="lg-text"></span>
+                </a>
+                {% else %}
+                <a href="{% url 'login' %}">Log in</a>
+                <a href="{% url 'signup' %}">Sign up</a>
+                {% endif %}
+            </nav>
+        </div>
+
+        <div class="main-content" style="overflow-x: visible;">
+            {% block content %}
+            <b>This is just base page</b>
+            {% endblock content %}
+        </div>
+
+        <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const submenuToggles = document.querySelectorAll('.submenu-toggle');
+
+    submenuToggles.forEach(function(toggle) {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const submenu = this.nextElementSibling;
+
+        if (submenu.style.display === 'block') {
+          submenu.style.display = 'none';
+        } else {
+          submenu.style.display = 'block';
+        }
+      });
+    });
+
+    document.addEventListener('click', function(e) {
+      const submenus = document.querySelectorAll('.submenu');
+      submenus.forEach(function(submenu) {
+        if (!submenu.contains(e.target)) {
+          submenu.style.display = 'none';
+        }
+      });
+    });
+  });
+        </script>
+    </body>
+</html>

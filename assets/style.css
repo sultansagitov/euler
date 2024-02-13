@@ -1,0 +1,680 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+}
+
+.tab {
+    display: none;
+}
+
+.create-link {
+    margin-top: 30px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #eb0aff;
+    color: white;
+    text-decoration: none;
+    border-radius: 15px;
+}
+
+body {
+    position: relative;
+    height: auto;
+}
+ul,
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-toggle {
+    display: none;
+}
+
+.header {
+    margin-left: auto;
+    width: 80%;
+    height: 100px;
+    background: white;
+    color: #071952;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding: 10px;
+    box-shadow: #000;
+}
+
+.donate-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 80px;
+    padding: 5px;
+    margin: 0 3px;
+}
+
+.donate-block:hover {
+    background: #b4b4b4;
+    border-radius: 15px;
+}
+
+.donate {
+    width: 40px;
+    padding-right: 5px;
+}
+
+.nav {
+    text-align: center;
+    align-items: center;
+    display: flex;
+}
+
+.nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #c2d9ff;
+    font-size: 20px;
+}
+
+.content {
+    margin-left: 0;
+    padding: 20px;
+    transition: 0.3s ease;
+}
+
+.logo {
+    width: 200px;
+    text-align: left;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+.course-name {
+    display: inline-block;
+}
+.topics {
+    width: 500px;
+    flex-wrap: wrap;
+}
+
+.topic {
+    width: calc(33.33% - 20px);
+}
+
+.topic h3 {
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+.levels {
+    max-width: 200px;
+}
+
+.levels a {
+    display: block;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #2d2d2d;
+}
+
+.sidebar {
+    float: left;
+    position: absolute;
+    width: 220px;
+    height: 1200px;
+    border-right: 1px solid #ccc;
+    overflow-x: visible;
+}
+
+.sidebar .sidebar-content .sidebar-icons {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    overflow-x: visible;
+}
+
+.sidebar .sidebar-content .sidebar-icons a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+
+.sidebar-icons img {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+}
+.sidebar-content {
+    padding-left: 20px;
+    overflow-x: visible;
+}
+.sidebar .sidebar-content .has-submenu {
+    position: relative;
+    overflow-x: visible;
+}
+
+.sidebar .sidebar-content .has-submenu .submenu {
+    display: none;
+    position: absolute;
+    bottom: -100px;
+    right: -140px;
+    background-color: #e4e4e4;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    overflow-x: visible;
+}
+
+.sidebar .sidebar-content .has-submenu:focus .submenu,
+.sidebar .sidebar-content .has-submenu:hover .submenu {
+    display: block;
+    overflow-x: visible;
+}
+
+/* Стили для пунктов в субменю */
+.sidebar .sidebar-content .has-submenu .submenu li {
+    list-style: none;
+    margin-bottom: 5px;
+    overflow-x: visible;
+}
+
+.sidebar .sidebar-content .has-submenu .submenu li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    overflow-x: visible;
+}
+
+.sidebar .sidebar-content .has-submenu .submenu li img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.li-content {
+    list-style: none;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.main-content {
+    margin-left: 250px;
+    overflow-x: visible;
+}
+
+.first-par {
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px #e2e2e2 solid;
+    padding-bottom: 10px;
+    overflow-x: visible;
+}
+
+.main-text {
+    display: flex;
+    align-items: center;
+    width: 500px;
+    height: 150px;
+    background-color: #07173a;
+    color: white;
+    border-radius: 15px;
+    overflow-x: visible;
+}
+
+.text-container {
+    width: 100%;
+    padding: 40px;
+}
+
+.main-heading {
+    font-size: 2.5em;
+    padding-bottom: 10px;
+    border-bottom: 1px white solid;
+}
+
+.main-pic {
+    width: 300px;
+}
+
+.second-par {
+    padding: 20px 0;
+    margin: auto;
+    border-bottom: 1px #e2e2e2 solid;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.second-par-heading {
+    display: block;
+    padding: 30px;
+    width: 100%;
+    height: auto;
+    background: #fffc4d;
+    border-radius: 17px;
+}
+
+.second-par-link {
+    position: relative;
+    text-decoration: none;
+    color: #000;
+    font-size: 30px;
+    width: 100%;
+}
+
+.second-par-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: rgb(157, 36, 163);
+    transform: translateX(-50%);
+    transition: width 0.3s ease-out;
+}
+
+.second-par-link:hover::after {
+    width: 100%;
+}
+.main-2,
+.main-3 {
+    width: 200px;
+}
+
+p {
+    margin-top: 5px;
+    font-size: 1.2em;
+}
+
+.sidebar .sidebar-content .has-submenu .submenu li a span {
+    display: block;
+}
+
+.lives-exhausted-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 666;
+    display: none;
+}
+
+.lives-exhausted-content {
+    text-align: center;
+    color: rgb(0, 0, 0);
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+.lives-exhausted-content h2 {
+    font-size: 30px;
+}
+.lives-exhausted-content img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.container-inner {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mathematics,
+.physics,
+.logic {
+    border-radius: 20px;
+    height: 400px;
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Градиентные цвета с более заметным переходом */
+.mathematics {
+    background: linear-gradient(
+        90deg,
+        #ffbd69,
+        #ff8a00,
+        #ffbd69
+    ); /* Градиент для Математики */
+}
+
+.physics {
+    background: linear-gradient(
+        90deg,
+        #5c97bf,
+        #276891,
+        #5c97bf
+    ); /* Градиент для Физики */
+}
+
+.logic {
+    background: linear-gradient(
+        90deg,
+        #78d350,
+        #4caf50,
+        #78d350
+    ); /* Градиент для Логики */
+}
+
+/* Адаптивность для ширины экрана 435 пикселей */
+@media (max-width: 435px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .mathematics,
+    .physics,
+    .logic {
+        flex: none;
+    }
+}
+
+.course_but {
+    padding: 8px;
+    color: inherit;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 700px) {
+    .create-link {
+        margin-top: 30px;
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #eb0aff;
+        color: white;
+        text-decoration: none;
+        border-radius: 15px;
+    }
+
+    .main-content {
+        margin: 0;
+    }
+    .logo {
+        display: none;
+    }
+    .sidebar {
+        border-top: 1px #000 solid;
+        padding-top: 20px;
+        border: none;
+        background: #ffffff;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: auto;
+        overflow-x: visible;
+    }
+
+    .sidebar-inner {
+        margin-bottom: 20px;
+        align-items: center;
+        position: static;
+    }
+
+    .has-submenu a i {
+        text-align: center;
+        display: none;
+    }
+
+    .sidebar-content {
+        display: flex;
+        font-size: 16px;
+        justify-content: space-between;
+        align-items: center;
+        text-transform: uppercase;
+        padding: 0 90px;
+    }
+    .sidebar .sidebar-content .has-submenu .submenu {
+        clip-path: inset(0 0 100% 0);
+        position: absolute;
+        top: -100px;
+        right: -50px;
+        background-color: #d4d4d4;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        width: 50px;
+        height: 100px;
+        transition: clip-path 0.3s ease;
+    }
+
+    .sidebar .sidebar-content .has-submenu:hover .submenu {
+        clip-path: inset(0);
+    }
+
+    .sidebar .sidebar-content .has-submenu .submenu li {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 0;
+    }
+
+    .sidebar .sidebar-content .has-submenu .submenu li a img {
+        width: 30px;
+        height: 30px;
+        margin-right: 5px;
+    }
+
+    .sidebar-content li a {
+        text-decoration: none;
+        color: #000;
+    }
+
+    .sidebar-icons a span {
+        display: none;
+    }
+
+    .main-pic {
+        width: 250px;
+    }
+    .main-2,
+    .main-3 {
+        width: 150px;
+    }
+    .main-text {
+        height: 100px;
+        width: 400px;
+        font-size: 10px;
+    }
+
+    .second-par-heading {
+        max-width: 100%;
+        height: auto;
+        font-size: 10px;
+    }
+
+    .second-par-link {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 435px) {
+    /* body{
+    height: 100vh;
+    background-image: url(images/rm251-mind-08-f.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-clip: border-box;
+  }   */
+
+    .main-pic {
+        overflow-x: visible;
+    }
+    .main-1 {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    .main-3 {
+        width: 100px;
+        height: 100px;
+    }
+    .main-2 {
+        display: none;
+    }
+
+    .sidebar {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        padding-top: 15px;
+        border-top: 1px black solid;
+        overflow-x: visible;
+    }
+
+    .main-text {
+        font-size: 10px;
+        width: 100%;
+    }
+    .second-par {
+        width: 90%;
+    }
+
+    .main-second-par {
+        padding: 20px;
+    }
+    .second-par-content {
+        width: 90%;
+        background: #e0ce27;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 0 auto;
+        text-align: center; /* Центрирование текста внутри элемента */
+    }
+
+    .second-par-heading {
+        max-width: 100%;
+        font-size: 12px;
+        height: auto;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .create-link {
+        margin-top: 20px;
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #eb0aff;
+        color: white;
+        text-decoration: none;
+        border-radius: 15px;
+    }
+
+    .second-par-link {
+        font-size: 16px;
+        text-decoration: none; /* Убедитесь, что ссылка не имеет подчеркивания */
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .sidebar-icons img {
+        width: 30px;
+        height: auto;
+
+        overflow-x: visible;
+    }
+
+    .has-submenu a i {
+        text-align: center;
+        display: none;
+    }
+
+    .sidebar-content {
+        padding: 0 15px;
+    }
+    .sidebar .sidebar-content .has-submenu .submenu {
+        clip-path: inset(0 0 100% 0);
+        position: absolute;
+        top: -120px;
+        right: 0;
+        background-color: #d4d4d4;
+
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        width: 100%;
+        height: 100px;
+        transition: clip-path 0.3s ease;
+        overflow-x: visible;
+    }
+
+    .sidebar .sidebar-content .has-submenu:hover .submenu {
+        clip-path: inset(0);
+        overflow-x: visible;
+    }
+
+    .sidebar .sidebar-content .has-submenu .submenu li {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 16px;
+    }
+
+    .sidebar .sidebar-content .has-submenu .submenu li a img {
+        width: 30px;
+        height: 30px;
+        margin-right: 5px;
+    }
+
+    .sidebar-content li a {
+        text-decoration: none;
+        color: #000;
+    }
+
+    .sidebar-icons a span {
+        display: none;
+    }
+
+    .main-text {
+        height: 120px;
+        width: 100%;
+        font-size: 12px;
+        margin-bottom: 30px;
+    }
+
+    .sidebar .sidebar-content .has-submenu .submenu li a span {
+        display: none;
+    }
+
+    .lives-exhausted-content h2 {
+        font-size: 20px;
+    }
+    .lives-exhausted-content img {
+        width: 100px;
+        height: auto;
+        margin-bottom: 10px;
+    }
+}

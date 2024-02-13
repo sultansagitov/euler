@@ -1,0 +1,71 @@
+h1 {
+    text-align: center;
+    padding-bottom: 20px;
+    color: black;
+    text-align: center;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.level-circle {
+    border: 1px solid #000;
+    color: initial;
+    border-radius: 50%;
+    width: 500px;
+    height: 500px;
+    position: relative;
+}
+
+.level-que {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.notanswered {
+    background: #00f5;
+}
+
+.correct {
+    background: #0f05;
+}
+
+.wrong {
+    background: #f005;
+}
+
+.center {
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: lightgreen;
+}
+
+.wrapper {
+    display: block;
+    max-width: 600px;
+    height: auto;
+    background: rgb(255, 255, 255);
+    padding: 30px 60px 30px 60px;
+    border-radius: 20px;
+}
+
+.notanswered:hover {
+    background: #5e5fbb;
+    transition: 0.2s ease-in-out;
+    color: aliceblue;
+    cursor: pointer;
+}

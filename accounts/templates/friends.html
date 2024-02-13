@@ -1,0 +1,177 @@
+{% extends 'base_header.html' %}
+{% load static %}
+
+
+{% block head %}
+<style>
+    /* Стили для основного контейнера */
+    .container_friends {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        display: flex;
+        border-radius: 20px;
+        flex-direction: column;
+        align-items: start;
+        max-width: 700px;
+        padding: 20px;
+    }
+
+    #friends,
+    #friendrequests,
+    #notfriends {
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        padding: 30px;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    p {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    img {
+        border-radius: 50%;
+        margin-right: 15px;
+    }
+
+    button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    .unfriend {
+        background-color: #ff6b6b;
+        color: #fff;
+    }
+
+    .accept {
+        background-color: #4caf50;
+        color: #fff;
+        margin-right: 8px;
+    }
+
+    .decline {
+        background-color: #f44336;
+        color: #fff;
+        margin-right: 8px;
+    }
+
+    .sendrequest {
+        background-color: #2196f3;
+        color: #fff;
+    }
+</style>
+
+<link rel="stylesheet" href="{% static 'style.css' %}" />
+
+{% block title %}
+<title>Friends</title>
+{% endblock title %}
+
+{% endblock head %}
+
+
+{% block content %}
+
+<div class="container_friends">
+    <div id="friends">
+        <h1>Ваши друзья</h1>
+        {% for friend in friends %}
+            <p>
+                {% if friend.avatar %}
+                    <img width="50" height="50" src="/media/{{ friend.avatar }}" alt="">
+                {% endif %}
+                {{ friend.user }}
+                #{{ friend.code }}
+                <button class="unfriend" onclick="unfriend(this)" data-code="{{ friend.code }}">Удалить</button>
+            </p>
+        {% endfor %}
+    </div>
+
+    <div id="friendrequests">
+        <h1>Ваши запросы на дружбу</h1>
+        {% for friendrequest in friendrequests %}
+            <p>
+                {% if friendrequest.fromuser.avatar %}
+                    <img width="50" height="50" src="/media/{{ friendrequest.fromuser.avatar }}" alt="">
+                {% endif %}
+
+                {{ friendrequest.fromuser.user }}
+                #{{ friendrequest.fromuser.code }}
+                
+                <button class="accept" onclick="accept(this)" data-id="{{ friendrequest.id }}">Принять</button>
+                <button class="decline" onclick="decline(this)" data-id="{{ friendrequest.id }}">Отклонить</button>
+            </p>
+        {% endfor %}
+    </div>
+
+    <div id="notfriends">
+        <h1>Может быть вашими друзьями</h1>
+        <form name="send_by_code_form">
+            <input type="text" minlength="6" maxlength="6" name="code">
+            <input type="submit" value="Отправить запрос">
+        </form>
+        {% for notfriend in notfriends %}
+            <p>
+                {% if notfriend.avatar %}
+                    <img width="50" height="50" src="/media/{{ notfriend.avatar }}" alt="">
+                {% endif %}
+                {{ notfriend.user }}
+                #{{ notfriend.code }}
+                <button class="sendrequest" onclick="sendrequest(this)" data-code="{{ notfriend.code }}">Отправить запрос</button>
+            </p>
+        {% endfor %}
+    </div>
+
+    <div id="notification">
+        <h1>Сообщения</h1>
+        {% for notification in request.user.student.friendnotification_from.iterator %}
+            <p>
+
+                {% if notification.fromuser.avatar %}
+                    <img width="50" height="50" src="/media/{{ notification.fromuser.avatar }}" alt="">
+                {% endif %}
+
+                <span>
+                    {{ notification.fromuser.user }}
+                    #{{ notification.fromuser.code }}
+                </span>
+                &nbsp;
+                {% if notification.type == "accept" %}
+                    <span>
+                        принял ваш запрос на дружбу
+                    </span>
+                {% elif notification.type == "decline" %}
+                    <span>
+                        отклонил ваш запрос на дружбу
+                    </span>
+                {% elif notification.type == "unfriend" %}
+                    <span>
+                        больше вам не друг
+                    </span>
+                {% elif notification.type == "request" %}
+                    <span>
+                        отправил запрос на дружбу
+                    </span>
+                {% endif %}
+            </p>
+        {% endfor %}
+    </div>
+</div>
+
+<script src="{% static 'friends.js' %}"></script>
+{% endblock content %}

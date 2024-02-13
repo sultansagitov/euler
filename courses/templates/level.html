@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load enum %}
+{% load answered %}
+
+{% block title %}
+<title>Levels</title>
+<link rel="stylesheet" href="{% static 'level.css' %}">
+
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    
+    <div class="wrapper">
+        <h1>{{ level.order }} уровень</h1>
+        <div class="level-circle">
+            {% for que_index, question in level.question_set.all|enum %}
+            {% if que_index == next_que|add:'-1' %}
+            <a href="{% url 'question' level.pk next_que %}">
+                <div data-id="{{ que_index }}"
+                    class="level-que {{ question|answered:request.user }}">
+                    {{ que_index|add:'+1' }}
+                </div>
+            </a>
+            {% else %}
+            <div data-id="{{ que_index }}"
+                class="level-que {{ question|answered:request.user }}">
+                {{ que_index|add:'+1' }}
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <br>
+
+    <div class="center">
+        {% if level.question_set.count != 0 %}
+            {% if next_que == -1 %}
+                <p>Вы уже ответили на все вопросы</p>
+                <a href="{% url 'levels' %}">
+                    <button>Вернуться ко всем уровням</button>
+                </a>
+            {% elif next_que == 1 %}
+                <a href="{% url 'question' level.pk 1 %}">
+                    <button>Начать</button>
+                </a>
+            {% else %}
+                <a href="{% url 'question' level.pk next_que %}">
+                    <button>Продолжит на {{ next_que }} уровне</button>
+                </a>
+            {% endif %}
+        {% else %}
+            <a href="{% url 'levels' %}">
+                <button>Вернуться</button>
+            </a>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+        for (let el of document.getElementsByClassName("level-que")) {
+            let id = +el.dataset.id
+
+            el.style.left = 250 + Math.cos((id / 12 - 0.25) * 2 * Math.PI) * 200 - 40 + "px"
+            el.style.top  = 250 + Math.sin((id / 12 - 0.25) * 2 * Math.PI) * 200 - 40 + "px"
+        }
+    </script>
+{% endblock content %}

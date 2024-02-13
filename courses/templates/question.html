@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load shuffle %}
+{% load enum %}
+
+{% block title %}
+    <title>Levels</title>
+    <link rel="stylesheet" href="{% static 'question.css' %}">
+{% endblock title %}
+
+{% block content %}
+    <div class="popup-bg">
+        <div class="popup">
+            <img width="300" height="400" src="{% static 'images/clown.jpg' %}" alt="">
+            <div class="popup-text"></div>
+            {% if que_index < level.question_set.count %}
+                <a href="{% url 'question' level.pk que_index|add:'+1' %}">Next question</a>
+            {% else %}
+                <a href="{% url 'level' level.pk %}">Finish level</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="question_conteiner">
+        <h1>
+            <a href="{% url 'level' level.pk %}">{{ level.pk }} level</a>
+        </h1>
+        <p class="question">{{ question.text }}</p>
+    
+        <div class="answers">
+            {% for i, choise in question.choise|enum|shuffle %}
+                <p class="answer answer-{{ i|add:'+1' }}" onclick="answer(this)" data-answer="{{ i|add:'+1' }}">{{ choise }}</p>
+            {% endfor %}
+        </div>
+    </div>
+
+
+    <script>
+        let level = "{{ level.pk }}"
+        let question = "{{ que_index }}"
+    </script>
+    <script src="{% static 'question.js' %}"></script>
+{% endblock content %}

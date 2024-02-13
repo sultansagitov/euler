@@ -1,0 +1,56 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %} 
+    {% block title %}
+        <title>Log in</title>
+    {% endblock title %}
+    <link rel="stylesheet" href="{% static 'login.css' %}" />
+{% endblock head %} 
+
+{% block content %}
+<div class="login-page">
+    <div class="form">
+        <form method="post" class="login-form">
+            {% csrf_token %}
+            <ul>
+                <li>
+                    <label for="id_avatar">
+                        <img
+                            id="img_avatar"
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAA1JREFUGFdjYGBg+A8AAQQBAHAgZQsAAAAASUVORK5CYII="
+                            alt="Your avatar"
+                            width="200"
+                            height="200"
+                        />
+                        <span>Нажмите чтобы выбрать</span>
+                        <input type="hidden" name="data_avatar" />
+                    </label>
+                    <br />
+                    <br />
+                </li>
+                {{ form.as_ul }}
+                <li>
+                    <input type="submit" value="Sign up" class="login" />
+                </li>
+                <p class="message">
+                    Уже создали аккаунт? <a href="{% url 'login' %}">Войти</a>
+                </p>
+            </ul>
+        </form>
+    </div>
+</div>
+<script>
+    let reader = new FileReader();
+
+    let d = document.getElementById("id_avatar");
+    d.addEventListener("change", (ev) => {
+        reader.onload = () => {
+            document.getElementById("img_avatar").src = reader.result;
+            document.getElementById("data_avatar").value = reader.result;
+        };
+
+        if (ev.target.files[0]) reader.readAsDataURL(ev.target.files[0]);
+    });
+</script>
+{% endblock content %}

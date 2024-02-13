@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Обучение</title>
+{% endblock %}
+
+{% block content %}
+<h1>{{ tutorial.course.name }}</h1>
+<div class="tutorial-text">{{ tutorial.text|safe }}</div>
+<script>
+    window.addEventListener("DOMContentLoaded", () => {
+        for (let a of document.querySelectorAll(".tutorial-text a")) {
+            let link;
+
+            if (a.textContent.trim().startsWith("http"))
+                link = new URL(a.textContent.trim());
+            else link = new URL("https://" + a.textContent.trim());
+
+            let video = document.createElement("iframe");
+            video.width = 560;
+            video.height = 315;
+            if (link.host.replace("www.", "").startsWith("youtu")) {
+                video.src = "https://www.youtube.com/embed" + link.pathname;
+                video.setAttribute("title", "YouTube video player");
+                video.setAttribute("frameborder", "0");
+                video.setAttribute(
+                    "allow",
+                    [
+                        "accelerometer",
+                        "autoplay",
+                        "clipboard-write",
+                        "encrypted-media",
+                        "gyroscope",
+                        "picture-in-picture",
+                        "web-share",
+                    ].join("; ")
+                );
+                video.setAttribute("allowfullscreen", "");
+            } else {
+                video.src = link.href;
+            }
+            a.innerHTML = "";
+            a.appendChild(video);
+        }
+    });
+</script>
+{% endblock %}

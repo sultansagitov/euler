@@ -1,0 +1,257 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+}
+.banner {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url(images/main_bg.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.navbar {
+  width: 85%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px 0;
+}
+
+.logo {
+  width: 200px;
+  cursor: pointer;
+}
+
+.navbar ul li {
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+  position: relative;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.navbar ul li::after {
+  content: "";
+  height: 3px;
+  width: 0;
+  background: #fff;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  transition: 0.3s;
+}
+
+.navbar ul li:hover::after {
+  width: 100%;
+}
+
+.content {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  color: #fff;
+}
+
+.h1-1 {
+  font-size: 50px;
+  line-height: 50px;
+  font-weight: 900;
+}
+
+.h1-2 {
+  font-weight: 700;
+  font-size: 40px;
+}
+.content h3 {
+  margin: 30px 0;
+  line-height: 25px;
+  font-weight: 400;
+}
+
+button {
+  width: 200px;
+  color: #fff;
+  padding: 15px 0;
+  text-align: center;
+  margin: 20px 10px;
+  border-radius: 25px;
+  border: 1px solid #fff;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+span {
+  background: rgb(30, 37, 116, 0.708);
+  height: 100%;
+  width: 0;
+  border-radius: 25px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: 0.5s;
+}
+
+button:hover span {
+  width: 100%;
+}
+
+.main h1 {
+  text-align: center;
+  margin: 20px 0;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  font-weight: 700;
+}
+.main-container {
+  width: 1400px;
+  margin: 0 auto;
+  padding: 15px 0;
+  height: 80vh;
+}
+.inner {
+  display: flex;
+  text-align: justify;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 200px;
+  flex-wrap: wrap
+}
+.inner img {
+  width: 250px;
+  height: 190px;
+  display: block;
+  margin: 0 auto;
+}
+
+.content-block p {
+  text-align: justify;
+  margin-top: 30px;
+  max-width: 400px;
+}
+
+.about {
+  margin: 0 auto;
+  width: 1000px;
+}
+.about-img img {
+  width: 300px;
+}
+.about-text {
+  flex: 0 1 calc(50% - 20px); 
+}
+.about-content {
+  align-items: center;
+  display: flex;
+  max-width: 100%;
+  text-align: justify;
+  justify-content: space-between;
+}
+
+.about-content h1 {
+  font-family: 'feather', sans-serif;
+  font-size: 36px;
+  line-height: normal;
+  margin: 0;
+  max-width: 340px;
+  text-align: left;
+}
+
+.about-content p {
+  font-size: 17px;
+  line-height: 24px;
+  margin: 0;
+  max-width: 430px;
+}
+
+
+@media screen and (max-width: 700px) {
+  .logo {
+    display: none;
+  }
+  .navbar {
+    font-size: 8px;
+    width: 100%;
+  }
+
+  .content h3 {
+    font-size: 18px;
+    padding: 0 20px;
+  }
+  .main-container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 15px 0;
+    height: auto;
+  }
+  .main-container h1 {
+    font-size: 24px;
+    padding-left: 20px;
+  }
+  .inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .content-block {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .about {
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  .about-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
+
+  .about-text {
+    flex: 0 1 calc(90%);
+  }
+
+  .about-img img {
+    width: 90%;
+    height: auto;
+    margin-bottom: 15px;
+    padding: 0;
+  }
+
+  .about-content h1 {
+    font-family: feather, sans-serif;
+    font-size: 26px;
+    line-height: normal;
+    margin: 0;
+    text-align: center;
+  }
+
+  .about-content p {
+    font-size: 16px;
+    line-height: 22px;
+    margin: 10px 0;
+    text-align: justify;
+  }
+}
+

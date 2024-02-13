@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% block head %}
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% block title %}
+        <title>Document</title>
+        {% endblock title %}
+
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="{% static 'icon/apple-touch-icon.png' %}"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="{% static 'icon/favicon-32x32.png' %}"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="{% static 'icon/favicon-16x16.png' %}"
+        />
+        <link rel="manifest" href="{% static 'icon/site.webmanifest' %}" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Archivo+Black&family=Belanosima:wght@700&family=Dancing+Script:wght@500&family=Inter:wght@400;700&family=Josefin+Sans:ital,wght@1,700&family=Lexend+Zetta:wght@900&family=Major+Mono+Display&family=Montserrat:wght@400;700;900&family=Poppins:wght@600&family=Prompt:wght@500;600&family=Raleway:wght@300&family=Ysabeau+SC:wght@400;700&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'style.css' %}" />
+        <script src="{% static 'mathjax/tex-mml-svg.js' %}"></script>
+
+        {% endblock head %}
+    </head>
+    <body>
+        {% block content %}
+        <b>This is just base page</b>
+        {% endblock content %}
+    </body>
+</html>

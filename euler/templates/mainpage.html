@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="{% static 'main_page.css' %}" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Archivo+Black&family=Belanosima:wght@700&family=Dancing+Script:wght@500&family=Inter:wght@400;700&family=Josefin+Sans:ital,wght@1,700&family=Lexend+Zetta:wght@900&family=Major+Mono+Display&family=Montserrat:wght@400;700;900&family=Poppins:wght@600&family=Prompt:wght@500;600&family=Raleway:wght@300&family=Ysabeau+SC:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="banner">
+            <div class="navbar">
+                <img
+                    src="{% static 'images/image.png' %}"
+                    alt="Logo"
+                    class="logo"
+                />
+                <ul>
+                    <li><a href="{% url 'login' %}">Войти</a></li>
+                    <li><a href="{% url 'signup' %}">Регистрация</a></li>
+                </ul>
+            </div>
+
+            <div class="content">
+                <h1 class="h1-1">"Euler"</h1>
+                <h1 class="h1-2">Исследование, Обучение, Вдохновение</h1>
+                <h3>
+                    Приветствуем вас на "Euler" – уникальной платформе, где
+                    наука и образование объединяются для вдохновения и развития
+                    вашего потенциала.
+                    <br />
+                    Наша цель – сделать процесс изучения математики
+                    увлекательным и доступным для каждого, независимо от уровня
+                    знаний.
+                    <br />
+                    Добро пожаловать в мир увлекательного обучения!
+                </h3>
+
+                <div>
+                    <a href="{% url 'signup' %}">
+                        <button><span></span>СТАРТ</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

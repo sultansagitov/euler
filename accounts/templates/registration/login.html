@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static 'login.css' %}" />
+        <title>Login</title>
+    </head>
+    <body>
+        <div class="login-page">
+            <div class="form">
+                <form method="post" class="login-form">
+                    {% csrf_token %}
+                    <ul>
+                        {{ form.as_ul }}
+                        <li>
+                            <input type="submit" value="Log in" class="login" />
+                        </li>
+                        <p class="message">
+                            Нет аккаунта?
+                            <a href="{% url 'signup' %}">Зарегистрироваться</a>
+                        </p>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

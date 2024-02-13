@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load enum %}
+
+{% block title %}
+    <title>Levels</title>
+{% endblock title %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <li>
+            <b>Тип курса:</b>
+            <select name="coursetype" id="">
+                <option value="-1">---</option>
+                {% for coursetype in coursetypes %}
+                <option value="{{ coursetype.pk }}">{{ coursetype }}</option>
+                {% endfor %}
+            </select>
+        </li>
+        <li>
+            <b>Название курса:</b>
+            <input type="text" name="course" id="">
+        </li>
+        <li><input type="submit" value="Create"></li>
+    </form>
+{% endblock content %}

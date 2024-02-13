@@ -1,0 +1,131 @@
+{% extends 'base_header.html' %}
+{% load static %}
+
+{% block title %}
+<title>Levels</title>
+{% endblock title %}
+
+{% block content %}
+<div class="first-par">
+    <div class="first-pic" style="overflow-x: visible;">
+        <img src="{% static 'images/main-1.jpg' %}" class="main-pic main-1" />
+    </div>
+    <div class="main-text" style="overflow-x: visible;">
+        <div class="text-container">
+            <h1 class="main-heading" style="overflow-x: visible;">Курсы</h1>
+            <p>В этом разделе ты можешь выбрать направление!</p>
+        </div>
+    </div>
+</div>
+
+{% if request.user.student.lifes <= 0 %}
+<div class="lives-exhausted-overlay" id="lives-exhausted-overlay">
+    <div class="lives-exhausted-content">
+        <img src="{% static 'images/rocket.png' %}" alt="FAIL" />
+        <h2>У тебя закончились жизни</h2> 
+       </div>
+</div>
+{% endif %}
+
+<div class="second-par main-second-par">
+    {% if request.user.student.admin %}
+    <img src="{% static 'images/main-2.jpg' %}" alt class="main-pic main-2" />
+    <div class="second-par-heading">
+        <div class="second-par-content">
+            <a href="{% url 'createlevel' %}" class="second-par-link">Создать
+                свои уровни</a>
+        </div>
+        <p>Ты можешь проверить свои знания и знания других пользователей!</p>
+        <a href="{% url 'createlevel' %}" class="create-link">Создать</a>
+    </div>
+    <img src="{% static 'images/main-3.jpg' %}" class="main-pic main-3" />
+    {% endif %}
+</div>
+
+<div class="container-inner">
+    <div class="mathematics">
+        <h2>Математика</h2>
+        <p style="font-size: 15px;"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+            vitae maxime ab earum eaque reiciendis voluptas cum qui quam soluta
+            ipsum cupiditate vel nam in enim possimus! Corrupti, esse aperiam?
+            Accusantium at pariatur consectetur dicta eaque ducimus doloremque
+            dolore, reiciendis totam quam sit quae repudiandae mollitia quo
+            earum ea praesentium? Vitae quis sint dolores animi explicabo
+            corporis omnis illo vel.</p>
+            <a href="{% url 'math' %}"><button class="course_but">Перейти к курсу</button></a>
+    </div>
+    <div class="physics">
+        <h2>Физика</h2>
+        <p style="font-size: 15px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+            vitae maxime ab earum eaque reiciendis voluptas cum qui quam soluta
+            ipsum cupiditate vel nam in enim possimus! Corrupti, esse aperiam?
+            Accusantium at pariatur consectetur dicta eaque ducimus doloremque
+            dolore, reiciendis totam quam sit quae repudiandae mollitia quo
+            earum ea praesentium? Vitae quis sint dolores animi explicabo
+            corporis omnis illo vel.</p>
+            <a href="physics_courses.html"><button class="course_but">Перейти к курсу</button></a>
+    </div>
+    <div class="logic">
+        <h2>Логика</h2>
+        <p style="font-size: 15px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+            vitae maxime ab earum eaque reiciendis voluptas cum qui quam soluta
+            ipsum cupiditate vel nam in enim possimus! Corrupti, esse aperiam?
+            Accusantium at pariatur consectetur dicta eaque ducimus doloremque
+            dolore, reiciendis totam quam sit quae repudiandae mollitia quo
+            earum ea praesentium? Vitae quis sint dolores animi explicabo
+            corporis omnis illo vel.</p>
+            <a href="logic_courses.html"><button class="course_but">Перейти к курсу</button></a>
+    </div>
+</div>
+
+<!-- <div class="container">
+    {% for coursetype in coursetypes %}
+    <div class="course-name">
+        <h1>{{ coursetype.name }}</h1>
+            <div class="topics">
+                {% for course in coursetype.course_set.all %}
+                <div class="topic">
+                    <h3>{{ course.name }}</h3>
+                </div>
+                <div class="levels">
+                    {% for level in course.level_set.all %}
+                    <p>
+                        <a href="{% url 'level' level.pk %}">{{ level.order }} уровень</a>
+                    </p>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div> -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const livesExhausted = document.getElementById('lives-exhausted');
+    const livesExhaustedOverlay = document.getElementById('lives-exhausted-overlay');
+
+    // Закрываем оверлей при клике в любом месте экрана
+    window.addEventListener('click', function(event) {
+        if (event.target == livesExhaustedOverlay) {
+            livesExhaustedOverlay.style.display = 'none'; // Скрываем сообщение
+        }
+    });
+
+    const levelLinks = document.querySelectorAll('.levels a');
+        levelLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+            const lives = Number('{{ request.user.student.lifes }}');
+
+            if (lives <= 0) {
+                event.preventDefault();
+                livesExhaustedOverlay.style.display = 'flex'; // Показываем сообщение по центру
+            }
+        });
+    });
+});
+
+
+  </script>
+{% endblock content %}
