@@ -1,4 +1,9 @@
-## Welcome to Euler!
+```
+      ___       __   __         ___    ___  __      ___            ___  __    /
+|  | |__  |    /  ` /  \  |\/| |__      |  /  \    |__  |  | |    |__  |__)  / 
+|/\| |___ |___ \__, \__/  |  | |___     |  \__/    |___ \__/ |___ |___ |  \ .  
+                                                                               
+```
 
 Euler is not just your average web project written in Django; it's a journey into the enchanting world of mathematics! 🧮✨
 
