@@ -2,7 +2,7 @@
 
 Euler is not just your average web project written in Django; it's a journey into the enchanting world of mathematics! 🧮✨
 
-Make with [daryn](https://github.com/darynku)
+Make with [/darynku](https://github.com/darynku)
 
 ### What's Euler all about?
 
