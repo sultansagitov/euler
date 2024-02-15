@@ -23,27 +23,22 @@ Euler isn't your typical run-of-the-mill website. It's an educational endeavor, 
 
 Ready to embark on your mathematical journey with Euler? Here's how to get started:
 
-1. **Clone the Repository:** Begin by cloning this repository to your local machine. You can do this by running the following command in your terminal:
+1. **Clone the Repository and install dependencies:** Begin by cloning this repository to your local machine. You can do this by running the following command in your terminal:
 
     ```bash
     git clone https://github.com/sultansagitov/euler.git
-    ```
-
-2. **Install Dependencies:** Once you have cloned the repository, navigate into the project directory and install the required dependencies:
-
-    ```bash
     cd euler
     pip install -r requirements.txt
     python manage.py migrate
     ```
 
-3. **Run the Server:** With the dependencies installed, you're ready to launch Euler! Run the following command to start the Django server:
+2. **Run the Server:** With the dependencies installed, you're ready to launch Euler! Run the following command to start the Django server:
 
     ```bash
     python manage.py runserver
     ```
 
-4. **Explore Euler:** Open your web browser and navigate to `http://localhost:8000` to experience Euler in all its mathematical glory!
+3. **Explore Euler:** Open your web browser and navigate to `http://localhost:8000` to experience Euler in all its mathematical glory!
 
 
 ---
