@@ -34,6 +34,7 @@ Ready to embark on your mathematical journey with Euler? Here's how to get start
     ```bash
     cd euler
     pip install -r requirements.txt
+    python manage.py migrate
     ```
 
 3. **Run the Server:** With the dependencies installed, you're ready to launch Euler! Run the following command to start the Django server:
