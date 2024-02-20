@@ -31,20 +31,17 @@ def register(request: WSGIRequest):
             student, _ = Student.objects.get_or_create(user=user)
 
             if request.POST["data_avatar"]:
-                data = base64.b64decode(request.POST["data_avatar"].split(
-                    ";base64,")[-1].encode('UTF-8'))
+                data = base64.b64decode(request.POST["data_avatar"].split(";base64,")[-1].encode('UTF-8'))
                 buf = io.BytesIO(data)
                 img = Image.open(buf)
 
-                content_type = request.POST["data_avatar"].split(";base64,")[
-                    0][5:]
+                content_type = request.POST["data_avatar"].split(";base64,")[0][5:]
 
                 img_io = io.BytesIO()
                 img.save(img_io, format=content_type.split("/")[1].upper())
                 student.avatar = InMemoryUploadedFile(img_io,
                                                       field_name=None,
-                                                      name=f"{student.pk}.{
-                                                          content_type.split('/')[-1]}",
+                                                      name=f"{student.pk}.{content_type.split('/')[-1]}",
                                                       content_type=content_type,
                                                       size=img_io.tell,
                                                       charset=None)

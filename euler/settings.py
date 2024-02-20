@@ -3,11 +3,11 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'YOUR_SECRET_KEY'
+SECRET_KEY = 'django-insecure-1234567890'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -64,9 +64,9 @@ WSGI_APPLICATION = 'euler.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'YOUR_DBNAME',
-        'USER': 'YOUR_USERNAME',
-        'PASSWORD': 'YOUR_PASSWORD',
+        'NAME': 'dj_euler',
+        'USER': 'postgres',
+        'PASSWORD': 'qwerty',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
