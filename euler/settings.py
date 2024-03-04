@@ -67,7 +67,7 @@ DATABASES = {
         'NAME': 'dj_euler',
         'USER': 'postgres',
         'PASSWORD': 'qwerty',
-        'HOST': '127.0.0.1',
+        'HOST': 'pgdb',
         'PORT': '5432',
     }
 }
