@@ -29,13 +29,12 @@ Ready to embark on your mathematical journey with Euler? Here's how to get start
     git clone https://github.com/sultansagitov/euler.git
     cd euler
     sudo docker-compose build
-    sudo docker-compose up -d
     ```
 
 2. **Run the Server:** With the dependencies installed, you're ready to launch Euler! Run the following command to start the Django server:
 
     ```bash
-    python manage.py runserver
+    sudo docker-compose up -d
     ```
 
 3. **Explore Euler:** Open your web browser and navigate to `http://localhost:8000` to experience Euler in all its mathematical glory!
