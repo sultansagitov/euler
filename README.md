@@ -21,23 +21,57 @@ Euler isn't your typical run-of-the-mill website. It's an educational endeavor, 
 
 ### Get Started
 
-Ready to embark on your mathematical journey with Euler? Here's how to get started:
+#### Method 1: Using `manage.py runserver`
 
-1. **Clone the Repository and install dependencies:** Begin by cloning this repository to your local machine. You can do this by running the following command in your terminal:
+##### Prerequisites:
+- Python installed on your machine
 
+##### Steps:
+1. Clone the Repository:
     ```bash
     git clone https://github.com/sultansagitov/euler.git
     cd euler
+    ```
+
+2. Install Dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. Run the Server:
+    ```bash
+    python manage.py runserver
+    ```
+
+4. Explore Euler:
+   Open your web browser and navigate to http://localhost:8000 to experience Euler.
+
+#### Method 2: Using Docker
+
+##### Prerequisites:
+- Docker installed on your machine
+
+##### Steps:
+1. Clone the Repository:
+    ```bash
+    git clone https://github.com/sultansagitov/euler.git
+    cd euler
+    ```
+
+2. Build Docker Image:
+    ```bash
     sudo docker-compose build
     ```
 
-2. **Run the Server:** With the dependencies installed, you're ready to launch Euler! Run the following command to start the Django server:
-
+3. Run the Server:
     ```bash
     sudo docker-compose up -d
     ```
 
-3. **Explore Euler:** Open your web browser and navigate to `http://localhost:8000` to experience Euler in all its mathematical glory!
+4. Explore Euler:
+   Open your web browser and navigate to http://localhost:8000 to experience Euler.
+
+Now you're ready to embark on your mathematical journey with Euler!
 
 
 ---
